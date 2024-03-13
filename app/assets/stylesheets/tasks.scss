@@ -1,0 +1,12 @@
+$btn_width : 100px;
+.cancel{
+    width: $btn_width;
+    text-align: center;
+    background-color: white;
+    border: 1px solid black;
+}
+.restore{
+    width: $btn_width;
+    text-align: center;
+    background-color: blue;
+}

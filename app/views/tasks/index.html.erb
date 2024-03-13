@@ -1,0 +1,41 @@
+
+<h2>予定一覧</h2>
+<%= link_to "新規追加", :new_task, class: "btn btn-primary" %>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>タイトル</th>
+            <th>開始日</th>
+            <th>終了日</th>
+            <th>終日</th>
+            <th>更新日時</th>
+            <th> </th>
+            <th> </th>
+            <th> </th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @tasks.each do |task| %>
+        <tr>
+            <td><%= task.id %></td>
+            <td><%= task.title %></td>
+            <td><%= task.start_date.strftime("%Y/%m/%d") %></td>
+            <td><%= task.end_date.strftime("%Y/%m/%d") %></td>
+            <td><%= p "○"  if task.all_day? %> </td>
+            <td><%= task.updated_at.to_s(:date_time_jp) %></td>
+            <td><%= link_to "詳細", task_path(task) %></td>
+            <td><%= link_to "編集", edit_task_path(task) %></td>
+            <td><%= link_to "削除", task_path(task), method: :delete, data: {
+                 title: '予定を削除しますか?',
+                 confirm: "#{task.title}を削除してよろしいですか？", 
+                 commit: '削除'
+                } %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+<footer>
+   <div>予定合計 &nbsp; <%= @tasks.count %> 件</div>
+   <div>本日の日付 &nbsp; <%= Time.zone.now.to_s(:date_jp)%></div>
+</footer>
