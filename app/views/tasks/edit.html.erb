@@ -1,4 +1,12 @@
 <h2 class="center">予定を編集してください</h2>
+<% if @task.errors.any? %>
+    <p><%= pluralize(@task.errors.count, "error") %></p>
+    <ul>
+        <% @task.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+        <% end %>
+    </ul>
+<% end %>
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
         <%= form_with model: @task do |f| %>
