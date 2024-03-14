@@ -1,0 +1,21 @@
+<%= link_to "一覧に戻る", :tasks %>
+<h2><%= @task.title %></h2>
+<%= link_to "編集", edit_task_path(@task) %>
+<table class="table table-bordered">
+    <tr>
+        <th class="column1">開始日</th>
+        <td><%= @task.start_date.strftime("%Y/%m/%d") %></td>
+    </tr>
+    <tr>
+        <th class="column1">終了日</th>
+        <td><%= @task.end_date.strftime("%Y/%m/%d") %></td>
+    </tr>
+    <tr>
+        <th class="column1">終日</th>
+        <td><%= p "○" if @task.all_day? %></td>
+    </tr>
+    <tr>
+        <th class="column1">スケジュールメモ</th>
+        <td><%= @task.memo %></td>
+    </tr>
+</table>
